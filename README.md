@@ -15,7 +15,7 @@
 - Host status (boolean: yes/no)
 - Superhost status (boolean: yes/no)
 - Reviews (total number, average rating)
-- Listings (foreign key to Listing entity)
+- Listing ID (foreign key to Listing entity)
 
 2. **Listing**
 - Listing ID (Primary key)
@@ -53,8 +53,8 @@
 
 5. **Message**
 - Message ID (Primary key)
-- Sender ID (foreign key to User entity)
-- Receiver ID (foreign key to User entity)
+- Sender ID (foreign key to User entity) (User ID)
+- Receiver ID (foreign key to User entity) (User ID)
 - Message content
 - Timestamp
 
@@ -88,7 +88,7 @@
 10. **Language**
 - Language ID (Primary key)
 - Language name
-- Listings (foreign key to Listing entity)
+- Listing ID (foreign key to Listing entity)
 
 
 
