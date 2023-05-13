@@ -1,0 +1,17 @@
+{
+  "sqltools.connections": [
+    {
+      "mysqlOptions": {
+        "authProtocol": "default"
+      },
+      "previewLimit": 50,
+      "server": "database-1.c4qzzxdaaj91.eu-north-1.rds.amazonaws.com",
+      "port": 3306,
+      "driver": "MySQL",
+      "name": "database-1",
+      "database": "airbnb",
+      "username": "admin",
+      "password": "airbnb789456"
+    }
+  ]
+}
