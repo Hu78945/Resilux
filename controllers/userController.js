@@ -10,7 +10,7 @@ const getUser = (req, res) => {
       function (err, data) {
         //If there is an error with the query
         if (err) {
-          res.status(500).json({
+          return res.status(500).json({
             success: false,
             message: err.message,
             err,
@@ -19,7 +19,7 @@ const getUser = (req, res) => {
 
         //No user was found
         if (data.length === 0) {
-          res.status(404).json({
+          return res.status(404).json({
             success: true,
             message: `No user foud with id: ${req.params.id}`,
           });
@@ -27,14 +27,14 @@ const getUser = (req, res) => {
 
         //User have been found
         const { password, ...otherData } = data[0];
-        res.status(200).json({
+        return res.status(200).json({
           success: true,
           data: otherData,
         });
       }
     );
   } catch (err) {
-    res.status(500).json({
+    return res.status(500).json({
       success: false,
       message: "Sever Error",
       err,
@@ -54,7 +54,7 @@ const updateUser = (req, res) => {
       function (err, data) {
         //If there is a error in the query
         if (err) {
-          res.status(500).json({
+          return res.status(500).json({
             success: false,
             message: err.message,
             err,
@@ -63,7 +63,7 @@ const updateUser = (req, res) => {
 
         //Check if the user is found
         if (data.length === 0) {
-          res.status(404).json({
+          return res.status(404).json({
             success: true,
             message: `No user was found with id: ${req.params.id}`,
           });
@@ -87,21 +87,21 @@ const updateUser = (req, res) => {
       function (err, data) {
         //If there is an error
         if (err) {
-          res.status(500).json({
+          return res.status(500).json({
             success: false,
             message: err.message,
             err,
           });
         }
 
-        res.status(200).json({
+        return res.status(200).json({
           success: true,
           message: "user profile have been updated",
         });
       }
     );
   } catch (error) {
-    res.status(500).json({
+    return res.status(500).json({
       success: false,
       message: "Server Error",
       error,
