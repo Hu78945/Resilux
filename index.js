@@ -16,8 +16,10 @@ app.use(express.json());
 
 //Require all routes
 const authRoute = require("./routes/auth");
+const userRoute = require("./routes/user");
 
 app.use("/api/v1", authRoute);
+app.use("/api/v1/user", userRoute);
 
 app.listen(3000, () => {
   console.log("Server is listing at port 3000");
