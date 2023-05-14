@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 
-// //Get the database
+//Get the database
 const db = require("./utils/connectdb");
 db.connect((err) => {
   if (err) {
