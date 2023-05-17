@@ -1,12 +1,15 @@
 require("dotenv").config();
 //Good commit
-const mysql = require("mysql");
-const connection = mysql.createConnection({
-  host: process.env.HOSTID,
-  user: process.env.USER,
-  password: process.env.PASSWORD,
-  database: process.env.DB_NAME,
+const mysql = require("mysql2");
+const pool = mysql.createPool({
+  host: "database-1.c4qzzxdaaj91.eu-north-1.rds.amazonaws.com",
+  user: "admin",
+  password: "airbnb789456",
+  database: "airbnb",
+  waitForConnections: true,
+  connectionLimit: 10,
+  queueLimit: 0,
 });
-module.exports = connection;
+module.exports = pool;
 
 //ok

@@ -3,9 +3,9 @@ const app = express();
 
 //Get the database
 const db = require("./utils/connectdb");
-db.connect((err) => {
+db.getConnection((err, connection) => {
   if (err) {
-    console.log(err);
+    console.log(`This is the error ${err}`);
   } else {
     console.log("DB have been connected");
   }
