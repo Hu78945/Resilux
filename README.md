@@ -14,9 +14,7 @@
 - Reviews (total number)
 - Listing ID (foreign key to Listing entity)
 - IsVerification  (e.g., email, phone number, government ID)
-
-<b>WE have to create a new table of payment methord and add a foreign key odf that payment methord table</b>
-- Payment information (e.g., credit card details)
+- Payment information (Foreign key from paymwents...)
 
 
 
@@ -79,9 +77,7 @@
 - Amount
 - Date
 - Booking ID (foreign key to Booking entity)
-
-<b>WE have to create a new table of payment methord and add a foreign key odf that payment methord table</b>
-- Payment method (e.g., credit card, PayPal, etc.)
+- Payment_method (Foreign key from payment_Method)
 
 
 
@@ -110,7 +106,11 @@
 - Language name
 - Listing ID (foreign key to Listing entity)
 
-
+11. **Payment Method**
+- Payment Method Id
+- credit_card
+- Debit_card
+- Cash_on_hand
 
 
 ## ER Diagram
