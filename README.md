@@ -37,16 +37,15 @@
 - Address line 2
 - is_Available (boolean)
 - Host ID (foreign key to User entity)
+- House_rules (Foreign key to House rules)
+- Types of properties
+- 
 
-<b>New table House rules Foreign key here</b>
-- House rules (e.g., no smoking, no pets, etc.)         
+     
          
-<b>New table of multiple choices describing the type of the table</b>
-- Type of property (e.g., apartment, house, villa, etc.)
 
-<b>this will be the Amenities table an d we will apply the foreign here</b>
-         
-- Amenities (e.g., Wi-Fi, kitchen, pool, etc.)
+
+
 
 3. **Booking**
 - Booking ID (Primary key)
@@ -112,6 +111,37 @@
 - Debit_card
 - Cash_on_hand
 
+12. **House Rules**
+- House_rules_ID (Primary key)
+- Smoking (bool)
+- Pets (bool)
+- NoshoesInside (bool)
+- party / Events (bool)
+- Visitors (bool)
+
+13. **Type Of Properties**
+- type_of_properties_id int primary key auto_incremen
+- apartment boolean
+- villa boolean
+- house boolean
+- cabin boolean
+- cottage boolean
+- loft boolean
+- town_house boolean
+
+14. **Amenities**
+- amenties_id int primary key auto_increment
+- wifi boolean
+- kitchen boolean
+- pool boolean
+- AC boolean
+- TV boolean
+- washer boolean
+- parking boolean
+- gym boolean
+- Outdoor_spaces boolean
+- safety_features boolean
+- essentials boolean
 
 ## ER Diagram
 ```
