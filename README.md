@@ -10,36 +10,52 @@
 - Password
 - Phone number
 - Profile picture
-- Verification status (e.g., email, phone number, government ID)
-- Payment information (e.g., credit card details)
-- Host status (boolean: yes/no)
-- Superhost status (boolean: yes/no)
-- Reviews (total number, average rating)
+- IsHost status (boolean: yes/no)
+- Reviews (total number)
 - Listing ID (foreign key to Listing entity)
+- IsVerification  (e.g., email, phone number, government ID)
+
+<b>WE have to create a new table of payment methord and add a foreign key odf that payment methord table</b>
+- Payment information (e.g., credit card details)
+
+
 
 2. **Listing**
 - Listing ID (Primary key)
 - Title
 - Description
-- Type of property (e.g., apartment, house, villa, etc.)
 - Number of guests
 - Number of bedrooms
 - Number of beds
 - Number of bathrooms
 - Price per night
-- Location (e.g., city, state, country)
-- Address
-- Amenities (e.g., Wi-Fi, kitchen, pool, etc.)
-- House rules (e.g., no smoking, no pets, etc.)
-- Availability calendar (start date, end date)
+- city
+- state
+- country
+- Postal code
+- Latitude
+- Longitude
+- Address line 1
+- Address line 2
+- is_Available (boolean)
 - Host ID (foreign key to User entity)
+
+<b>New table House rules Foreign key here</b>
+- House rules (e.g., no smoking, no pets, etc.)         
+         
+<b>New table of multiple choices describing the type of the table</b>
+- Type of property (e.g., apartment, house, villa, etc.)
+
+<b>this will be the Amenities table an d we will apply the foreign here</b>
+         
+- Amenities (e.g., Wi-Fi, kitchen, pool, etc.)
 
 3. **Booking**
 - Booking ID (Primary key)
-- Check-in date
-- Check-out date
+- start date
+- end date
 - Number of guests
-- Total cost
+- Total price
 - Listing ID (foreign key to Listing entity)
 - Guest ID (foreign key to User entity)
 
@@ -62,8 +78,13 @@
 - Payment ID (Primary key)
 - Amount
 - Date
-- Payment method (e.g., credit card, PayPal, etc.)
 - Booking ID (foreign key to Booking entity)
+
+<b>WE have to create a new table of payment methord and add a foreign key odf that payment methord table</b>
+- Payment method (e.g., credit card, PayPal, etc.)
+
+
+
 
 7. **Wish List**
 - Wish List ID (Primary key)
@@ -81,8 +102,7 @@
 9. **Notification**
 - Notification ID (Primary key)
 - User ID (foreign key to User entity)
-- Notification type (e.g., booking confirmation, message received, etc.)
-- Notification content
+- Message
 - Timestamp
 
 10. **Language**
