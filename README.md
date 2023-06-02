@@ -14,7 +14,6 @@
 - Reviews (total number)
 - Listing ID (foreign key to Listing entity)
 - IsVerification  (e.g., email, phone number, government ID)
-- Payment information (Foreign key from paymwents...)
 
 
 
@@ -39,10 +38,7 @@
 - Host ID (foreign key to User entity)
 - House_rules (Foreign key to House rules)
 - Types of properties
-- 
-
-     
-         
+        
 
 
 
@@ -112,7 +108,7 @@
 - Cash_on_hand
 
 12. **House Rules**
-- House_rules_ID (Primary key)
+- House_rules_id (Primary key)
 - Smoking (bool)
 - Pets (bool)
 - NoshoesInside (bool)
