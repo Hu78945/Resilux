@@ -36,13 +36,7 @@
 - Address line 2
 - is_Available (boolean)
 - Host ID (foreign key to User entity)
-- House_rules (Foreign key to House rules)
-- Types of properties
         
-
-
-
-
 3. **Booking**
 - Booking ID (Primary key)
 - start date
@@ -75,8 +69,6 @@
 - Payment_method (Foreign key from payment_Method)
 
 
-
-
 7. **Wish List**
 - Wish List ID (Primary key)
 - User ID (foreign key to User entity)
@@ -102,13 +94,18 @@
 - Listing ID (foreign key to Listing entity)
 
 11. **Payment Method**
+- listing id (foreign key) 
 - Payment Method Id
+above both are the composite primary key
+- userid (foreign key)
 - credit_card
 - Debit_card
 - Cash_on_hand
 
 12. **House Rules**
 - House_rules_id (Primary key)
+- listing_id (foreign key)
+above both are the composite primary key
 - Smoking (bool)
 - Pets (bool)
 - NoshoesInside (bool)
@@ -116,7 +113,10 @@
 - Visitors (bool)
 
 13. **Type Of Properties**
+
 - type_of_properties_id int primary key auto_incremen
+- listings_id (foreign key)
+above both are the composite primary key
 - apartment boolean
 - villa boolean
 - house boolean
@@ -127,6 +127,8 @@
 
 14. **Amenities**
 - amenties_id int primary key auto_increment
+- listings_id (Foreign key)
+above both are the composite primary key
 - wifi boolean
 - kitchen boolean
 - pool boolean
