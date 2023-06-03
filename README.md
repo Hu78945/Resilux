@@ -308,7 +308,7 @@ Above both are the composite keys
 - create a trigger when listings is updated for displaying it
 - create a trigger when booking is updated for displaying it 
 
-
+##Contributions in this project
 
 **Abdulrehman part:**
 
