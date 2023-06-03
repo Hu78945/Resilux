@@ -14,6 +14,8 @@ const loginUser = (req, res) => {
         });
       }
 
+      //If the user does not exist
+
       if (data.length === 0) {
         return res.status(404).json({
           success: true,
