@@ -150,8 +150,8 @@ const checkIfAuthenticated = (req, res, next) => {
 
   //Assign the data to the req.user
   db.query(
-    "SELECT user_id from users WHERE user_id = ?",
-    [decoded.id],
+    "SELECT Email from users WHERE Email = ?",
+    [decoded.Email],
     function (err, data) {
       if (err) {
         return res.status(500).json({
@@ -160,9 +160,9 @@ const checkIfAuthenticated = (req, res, next) => {
           err,
         });
       }
-      const { password, ...others } = data[0];
-      console.log(`This is the user id ${others.user_id}`);
-      req.user = others.user_id;
+      const Email = data[0].Email;
+      console.log(`This is the Email ${Email}`);
+      req.user = Email;
     }
   );
   console.log(req.user);
