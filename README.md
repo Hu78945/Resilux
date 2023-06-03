@@ -82,10 +82,10 @@
 - Listing ID (foreign key to Listing entity)
 
 11. **Payment Method**
-<b>
+
+
 - listing id (foreign key) 
 - Payment Method Id
-</b>
 above both are the composite primary key
 - userid (foreign key)
 - credit_card
@@ -93,10 +93,10 @@ above both are the composite primary key
 - Cash_on_hand
 
 12. **House Rules**
-<b>
+
+
 - House_rules_id (Primary key)
 - listing_id (foreign key)
-</b>
 above both are the composite primary key
 - Smoking (bool)
 - Pets (bool)
@@ -105,10 +105,9 @@ above both are the composite primary key
 - Visitors (bool)
 
 13. **Type Of Properties**
-<b>
+
 - type_of_properties_id int primary key auto_incremen
 - listings_id (foreign key)
-</b>
 above both are the composite primary key
 - apartment boolean
 - villa boolean
@@ -120,10 +119,8 @@ above both are the composite primary key
 
 14. **Amenities**
 
-<b>
 - amenties_id int primary key auto_increment
 - listings_id (Foreign key)
-</b>
 above both are the composite primary key
 - wifi boolean
 - kitchen boolean
