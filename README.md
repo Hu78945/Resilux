@@ -6,16 +6,13 @@
 - User ID (Primary key)
 - First name
 - Last name
-- Email address
-- Password
+- Email (Foreign key)
 - Phone number
 - Profile picture
 - IsHost status (boolean: yes/no)
 - Reviews (total number)
 - Listing ID (foreign key to Listing entity)
 - IsVerification  (e.g., email, phone number, government ID)
-
-
 
 2. **Listing**
 - Listing ID (Primary key)
@@ -26,16 +23,10 @@
 - Number of beds
 - Number of bathrooms
 - Price per night
-- city
-- state
-- country
-- Postal code
-- Latitude
-- Longitude
-- Address line 1
-- Address line 2
 - is_Available (boolean)
 - Host ID (foreign key to User entity)
+- Neighbourhood_ID (Foreign key)
+- Address (Foreign key)
         
 3. **Booking**
 - Booking ID (Primary key)
@@ -77,9 +68,6 @@
 8. **Neighborhood**
 - Neighborhood ID (Primary key)
 - Neighborhood name
-- City
-- State
-- Country
 - Listings (foreign key to Listing entity)
 
 9. **Notification**
@@ -148,6 +136,36 @@ above both are the composite primary key
 - Outdoor_spaces boolean
 - safety_features boolean
 - essentials boolean
+
+15. **Credentials**
+
+- Email (Primary key) varchar(100)
+- password varchar(100)
+
+16. **City**
+
+- Neighbourhood_ID (Foreign key)
+- City
+Above both are the composite keys
+
+
+17. **Country**
+
+- Neighbourhood_ID (Foreign key)
+- Country
+Above both are the composite keys
+
+
+18. **State**
+
+- Neighbourhood_ID (Foreign key)
+- State
+Above both are the composite keys
+
+19. **Location**
+
+- address (primary key)
+- Postal code
 
 ## ER Diagram
 ```
