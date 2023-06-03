@@ -11,7 +11,7 @@ db.getConnection((err, connection) => {
   }
 });
 
-//Use JSON FILES
+//Use JSON FiLES
 app.use(express.json());
 
 //Require all routes
