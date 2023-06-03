@@ -3,7 +3,7 @@ const db = require("../utils/connectdb");
 const bcrypt = require("bcrypt");
 const loginUser = (req, res) => {
   try {
-    const q = "SELECT * FROM users WHERE email = ?";
+    const q = "SELECT * FROM credentials WHERE Email = ?";
     db.query(q, [req.body.email], function (err, data) {
       //If there is a error
       if (err) {
@@ -16,21 +16,21 @@ const loginUser = (req, res) => {
 
       const CheckdPasswrod = bcrypt.compareSync(
         req.body.password,
-        data[0].password
+        data[0].Password
       );
       if (!CheckdPasswrod) {
         return res.status(400).json({
           success: true,
-          message: "Wrong passwordor username",
+          message: "Wrong password or username",
         });
       }
 
-      const token = jwt.sign({ id: data[0].user_id }, "secerate_key");
+      const token = jwt.sign({ id: data[0].Email }, "secerate_key");
 
-      const { password, ...others } = data[0];
-      res.status(200).json({
+      const Email = data[0].Email;
+      return res.status(200).json({
         success: true,
-        others,
+        Email,
         token,
       });
     });
@@ -47,7 +47,7 @@ const registerUser = (req, res) => {
   try {
     //Check if the user exist
     const q = {
-      sql: "SELECT * FROM users where email = ?",
+      sql: "SELECT * FROM credentials where Email = ?",
       values: [[req.body.email]],
     };
 
@@ -72,14 +72,30 @@ const registerUser = (req, res) => {
       const salt = bcrypt.genSaltSync(10);
       const hashedPassword = bcrypt.hashSync(req.body.password, salt);
 
+      //Insert Email into credentials
+
+      const emailQuery = {
+        sql: "INSERT INTO credentials (Email, Password) VALUES (?)",
+        values: [[req.body.email, hashedPassword]],
+      };
+
+      db.query(emailQuery, (error, data) => {
+        if (error) {
+          return res.status(500).json({
+            success: false,
+            message: error.message,
+            error,
+          });
+        }
+      });
+
       const query = {
-        sql: "INSERT INTO users (`first_name`,`last_name`,`email`,`password`,`phone_number`,`profile_picture`) VALUES (?)",
+        sql: "INSERT INTO users (`first_name`,`last_name`,`Email`,`phone_number`,`profile_picture`) VALUES (?)",
         values: [
           [
             req.body.firstName,
             req.body.lastName,
             req.body.email,
-            hashedPassword,
             req.body.phoneNumber,
             req.body.profilePic,
           ],
@@ -96,7 +112,7 @@ const registerUser = (req, res) => {
         }
 
         db.query(
-          "SELECT * FROM users where email = ?",
+          "SELECT * FROM users where Email = ?",
           [[req.body.email]],
           (err, data) => {
             res.status(200).json({

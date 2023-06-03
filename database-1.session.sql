@@ -1,1 +1,16 @@
-ALTER USER 'username' @'database -1.c4qzzxdaaj91.eu - north -1.rds.amazonaws.com' IDENTIFIED WITH mysql_native_password BY 'airbnb789456';
+-- INSERT INTO users (
+--         first_name,
+--         last_name,
+--         phone_number,
+--         profile_picture,
+--         Email
+--     )
+-- values (
+--         "Behzad",
+--         "Hassan",
+--         033333,
+--         "Hello",
+--         "f2021266118@gmail.com"
+--     );
+SELECT *
+FROM credentials;
