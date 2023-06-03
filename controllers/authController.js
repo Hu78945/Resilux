@@ -14,6 +14,15 @@ const loginUser = (req, res) => {
         });
       }
 
+      if (data.length === 0) {
+        return res.status(404).json({
+          success: true,
+          message: `No user was found with this emial ${req.body.email}`,
+        });
+      }
+
+      console.log(data);
+
       const CheckdPasswrod = bcrypt.compareSync(
         req.body.password,
         data[0].Password
@@ -25,7 +34,7 @@ const loginUser = (req, res) => {
         });
       }
 
-      const token = jwt.sign({ id: data[0].Email }, "secerate_key");
+      const token = jwt.sign({ Email: data[0].Email }, "secerate_key");
 
       const Email = data[0].Email;
       return res.status(200).json({
@@ -160,7 +169,8 @@ const checkIfAuthenticated = (req, res, next) => {
           err,
         });
       }
-      const Email = data[0].Email;
+      console.log(data);
+      const Email = data[0];
       console.log(`This is the Email ${Email}`);
       req.user = Email;
     }
@@ -170,7 +180,7 @@ const checkIfAuthenticated = (req, res, next) => {
   next();
 };
 
-const checkUserRole = (req, res) => {
+const checkUserRole = (req, res, next) => {
   if (req.user === req.params.id) {
     next();
   }
