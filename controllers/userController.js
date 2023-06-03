@@ -26,10 +26,9 @@ const getUser = (req, res) => {
         }
 
         //User have been found
-        const { password, ...otherData } = data[0];
         return res.status(200).json({
           success: true,
-          data: otherData,
+          data,
         });
       }
     );
