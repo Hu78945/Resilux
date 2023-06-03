@@ -249,3 +249,163 @@ Above both are the composite keys
 +-----------------+
 
 ```
+
+**Store procedure**
+
+- Log-in (email, password)
+- Register (All attribute except password)
+- update a user
+- delete a user(use credential to delete a user)
+- create a listings
+        - specify house rules
+        - specify amenities
+        - specify type of property
+        - specify neighbourhood
+- update a listing 
+        - generate a notification 
+- delete a listing
+- create a booking
+        - create a payment
+        - cancel a payment
+        - choose a payment method
+- update a booking 
+        - generate a notification 
+- delete a booking
+- post a review on particular listing
+- post a review on particular user
+- delete a review on particular listing
+- delete a review on particular user
+- create a message
+- delete a message
+- add a language
+
+
+**Function**
+
+- Check if user exists
+- create a function to index listing name
+
+**Views**
+
+- get a user with particular email
+- get a listings with particular user email
+- get a listings with particular neighbourhood id
+- filters for listing(city, country, state, price range, number of bedrooms)
+- get a bookings with particular user id
+- get a bookings with particular neighbourhood id
+- get a particular review of a listing 
+- get a particular review of a user
+- view a message with particular user
+- view history of all the payments of that user
+- select a language
+
+**Triggers**
+
+- create a trigger when user is created for displaying it
+- crate a trigger when listings is created for displaying it
+- crate a trigger when booking is created for displaying it
+- create a trigger when user is updated for displaying it
+- create a trigger when listings is updated for displaying it
+- create a trigger when booking is updated for displaying it 
+
+
+
+**Abdulrehman part:**
+
+**Store Procedure**
+
+- create a listings 1
+        - specify house rules
+        - specify amenities
+        - specify type of property
+        - specify neighbourhood
+
+- create a booking
+        - create a payment
+        - cancel a payment
+        - choose a payment method
+- update a booking 
+        - generate a notification 
+- delete a booking
+- create a message
+- delete a message
+
+**Views**
+
+- get a listings with particular user email
+- get a listings with particular neighbourhood id
+- filters for listing(city, country, state, price range, number of bedrooms)
+- get a particular review of a listing 
+- get a particular review of a user
+- view a message with particular user
+
+**Triggers**
+
+- create a trigger when user is created for displaying it
+- create a trigger when user is updated for displaying it
+        
+**Behzad part:**
+
+**Store Procedure**
+
+- create a listings 2
+        - specify house rules
+        - specify amenities
+        - specify type of property
+        - specify neighbourhood
+
+- update a listing 
+        - generate a notification 
+- delete a listing
+- post a review on particular listing
+- post a review on particular user
+- delete a review on particular listing
+- delete a review on particular user
+
+
+**Views**
+
+- get a listings with particular user email
+- get a listings with particular neighbourhood id
+- filters for listing(city, country, state, price range, number of bedrooms)
+- get a user with particular email
+- view history of all the payments of that user
+- select a language
+
+**Triggers**
+
+- crate a trigger when listings is created for displaying it
+- create a trigger when listings is updated for displaying it
+
+**Yahya part:**
+
+**Store Procedure**
+- create a listings 3
+        - specify house rules
+        - specify amenities
+        - specify type of property
+        - specify neighbourhood
+
+- Log-in (email, password)
+- Register (All attribute except password)
+- update a user
+- delete a user(use credential to delete a user)
+- add a language
+
+**Views**
+
+- get a listings with particular user email
+- get a listings with particular neighbourhood id
+- filters for listing(city, country, state, price range, number of bedrooms)
+- get a bookings with particular user id
+- get a bookings with particular neighbourhood id
+
+**Triggers**
+
+- crate a trigger when booking is created for displaying it
+- create a trigger when booking is updated for displaying it 
+
+**Function**
+
+- Check if user exists
+- create a function to index listing name
