@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { getUser, updateUser } = require("../controllers/userController");
+const { getUser, updateUser,deleteUser } = require("../controllers/userController");
 const {
   checkIfAuthenticated,
   checkUserRole,
@@ -9,5 +9,7 @@ router
   .route("/:id")
   .get(getUser)
   .put(checkIfAuthenticated, checkUserRole, updateUser);
+
+router.route('/:email').delete(checkIfAuthenticated,checkUserRole,deleteUser);
 
 module.exports = router;

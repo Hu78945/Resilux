@@ -109,4 +109,62 @@ const updateUser = (req, res) => {
   }
 };
 
-module.exports = { getUser, updateUser };
+
+//Delete a user profile
+const deleteUser = (req, res) => {
+  try {
+    const email = req.params.email;
+
+    //Checking if the user exist
+    db.query(
+      "SELECT * FROM credentials where Email = ?",
+      [email],
+      function (err, data) {
+        //If there is a error in the query
+        if (err) {
+          return res.status(500).json({
+            success: false,
+            message: err.message,
+            err,
+          });
+        }
+
+        //Check if the user is found
+        if (data.length === 0) {
+          return res.status(404).json({
+            success: true,
+            message: `No user was found with email: ${req.params.email}`,
+          });
+        }
+      }
+    );
+
+//Delete the user information
+    db.query(
+      "DELETE FROM credentials WHERE Email = ?",
+      req.params.email,
+      function (err, data) {
+        //If there is an error
+        if (err) {
+          return res.status(500).json({
+            success: false,
+            message: err.message,
+            err,
+          });
+        }
+
+        return res.status(200).json({
+          success: true,
+          message: "user profile have been Deleted",
+        });
+      }
+    );
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: "Server Error",
+      error,
+    });
+  }
+};
+module.exports = { getUser, updateUser, deleteUser};
