@@ -310,7 +310,7 @@ Above both are the composite keys
 
 ##Contributions in this project
 
-##Abdulrehman part:
+## Abdulrehman part:
 
 **Store Procedure**
 
@@ -344,7 +344,7 @@ Above both are the composite keys
 - create a trigger when user is created for displaying it
 - create a trigger when user is updated for displaying it
         
-##Behzad part:
+## Behzad part:
 
 **Store Procedure**
 
@@ -377,7 +377,7 @@ Above both are the composite keys
 - crate a trigger when listings is created for displaying it
 - create a trigger when listings is updated for displaying it
 
-##Yahya part:
+## Yahya part:
 
 **Store Procedure**
 - create a listings 3
