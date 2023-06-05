@@ -75,4 +75,17 @@ END //
 
 DELIMITER ;
 
-
+DELIMITER //
+CREATE PROCEDURE listingsUsingEmail(IN emailAdd VARCHAR(100))
+BEGIN
+		DECLARE listing INT;
+        DECLARE `check` INT;
+		SET `check` = (SELECT COUNT(*) FROM users WHERE Email = emailAdd);
+		IF (`check` > 0) THEN
+			SET listing = (SELECT (listing_id) FROM users WHERE Email = emailAdd);
+            SELECT * FROM listings WHERE listing_id = listing;
+		ELSE 
+			SELECT "Email or Password doesn't match or User does not exists";
+        END IF;
+END //
+DELIMITER ;
