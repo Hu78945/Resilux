@@ -1,7 +1,10 @@
 #Queries in creating Store procedure, Triggers, Views and Functions
 #Abdulrehman
 
+## Store Procedures
+
 **BOOKING INSERTION**
+
 -- DELIMITER $$
 -- CREATE PROCEDURE 
 -- add_bookings(IN startDate date, IN endDate date, IN totalPrice decimal(10, 2),
@@ -123,4 +126,29 @@ END $$
 DELIMITER ;
 
 call message_Deletion(5);
+
+## Views using store procedures
+
+**view reviews from listings id**
+
+  DELIMITER $$
+CREATE PROCEDURE 
+view_review_through_listing(IN listingID int)
+BEGIN
+    select * from reviews where reviews.listing_id = listingID;
+    
+END $$
+DELIMITER ;
+
+
+**view reviews from user id**
+
+  DELIMITER $$
+CREATE PROCEDURE 
+view_review_through_user(IN userID int)
+BEGIN
+    select * from reviews where reviews.host_id = userID;
+    
+END $$
+DELIMITER ;
 
