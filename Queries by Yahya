@@ -25,3 +25,28 @@ END //
 
 DELIMITER ;
 
+DELIMITER //
+CREATE PROCEDURE `update`(IN prevEmail VARCHAR(100),IN firstName VARCHAR(50),IN lastName VARCHAR(50),IN emailAdd VARCHAR(100),
+						  IN pass VARCHAR(100),IN PhoneNo VARCHAR(20), IN profilePic varchar(255))
+BEGIN
+		  DECLARE `check` INT;
+		SET `check` = (SELECT COUNT(*) FROM credentials WHERE Email = prevEmail);
+		IF (`check` > 0) THEN
+        
+			UPDATE users 
+            SET first_name = firstName,last_name = lastName,Email = emailAdd,phone_number = PhoneNo,profile_picture = profilePic
+			WHERE Email = prevEmail;
+            
+			UPDATE credentials
+			SET Email = emailAdd, `Password` = pass
+			WHERE Email = prevEmail;
+
+			
+		ELSE 
+			SELECT "Email doesn't match or User does not exists";
+        END IF;
+END //
+
+DELIMITER ;
+
+
