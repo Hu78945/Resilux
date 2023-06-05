@@ -1,5 +1,46 @@
 #Queries in creating Store procedure, Triggers, Views and Functions
 ##Behzad
 
+DELIMITER $$ CREATE PROCEDURE add_listing (
+    IN TITLE VARCHAR(255),
+    IN `DESC` TEXT,
+    IN PRICEC_PER_NIGHT DECIMAL(10, 2),
+    IN IS_AVAILABEL BOOLEAN,
+    IN `ADDRESS` VARCHAR(255),
+    IN NO_OF_GUESTS INT,
+    IN NO_OF_BEDS INT,
+    IN NO_OF_BEDROOMS INT,
+    IN NO_OF_BATHROOMS INT,
+    IN HOST_ID INT
+) BEGIN
+INSERT INTO listings (
+        title,
+        `description`,
+        price_per_night,
+        is_available,
+        Address,
+        no_of_beds,
+        no_of_bedrooms,
+        no_of_bathrooms,
+        host_id,
+        neighborhood_id
+    )
+values (
+        TITLE,
+        `DESC`,
+        PRICEC_PER_NIGHT,
+        IS_AVAILABEL,
+        `ADDRESS`,
+        NO_OF_GUESTS,
+        NO_OF_BEDS,
+        NO_OF_BEDROOMS,
+        NO_OF_BATHROOMS,
+        HOST_ID
+    );
+END $$ DELIMITER;
+
+
+
+
 
 
