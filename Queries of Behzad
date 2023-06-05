@@ -42,5 +42,51 @@ END $$ DELIMITER;
 
 
 
+DELIMITER $$
+CREATE PROCEDURE update_listing (
+    IN TITLE VARCHAR(255),
+    IN `DESC` TEXT,
+    IN PRICEC_PER_NIGHT DECIMAL(10, 2),
+    IN IS_AVAILABEL BOOLEAN,
+    IN `ADDRESS` VARCHAR(255),
+    IN NO_OF_GUESTS INT,
+    IN NO_OF_BEDS INT,
+    IN NO_OF_BEDROOMS INT,
+    IN NO_OF_BATHROOMS INT,
+    IN HOST_ID INT
+) BEGIN
+    INSERT INTO listings (
+        title,
+        `description`,
+        price_per_night,
+        is_available,
+        Address,
+        no_of_beds,
+        no_of_bedrooms,
+        no_of_bathrooms,
+        host_id,
+        neighborhood_id
+    )
+    VALUES (
+        COALESCE(TITLE, NULL),
+        COALESCE(`DESC`, NULL),
+        COALESCE(PRICEC_PER_NIGHT, NULL),
+        COALESCE(IS_AVAILABEL, NULL),
+        COALESCE(`ADDRESS`, NULL),
+        COALESCE(NO_OF_GUESTS, NULL),
+        COALESCE(NO_OF_BEDS, NULL),
+        COALESCE(NO_OF_BEDROOMS, NULL),
+        COALESCE(NO_OF_BATHROOMS, NULL),
+        COALESCE(HOST_ID, NULL)
+    );
+END $$
+DELIMITER ;
+
+
+
+
+
+
+
 
 
