@@ -12,6 +12,18 @@ END //
 
 DELIMITER ;
 
+
+
+
+
+
+
+
+
+
+
+
+
 # register
 DELIMITER //
 CREATE PROCEDURE register(IN firstName VARCHAR(50),IN lastName VARCHAR(50),IN emailAdd VARCHAR(100),
@@ -24,6 +36,18 @@ BEGIN
 END //
 
 DELIMITER ;
+
+
+
+
+
+
+
+
+
+
+
+
 
 DELIMITER //
 CREATE PROCEDURE `update`(IN prevEmail VARCHAR(100),IN firstName VARCHAR(50),IN lastName VARCHAR(50),IN emailAdd VARCHAR(100),
@@ -49,6 +73,16 @@ END //
 
 DELIMITER ;
 
+
+
+
+
+
+
+
+
+
+
 # delete
 DELIMITER //
 CREATE PROCEDURE `delete`(IN emailAdd VARCHAR(100),IN pass VARCHAR(100))
@@ -66,6 +100,15 @@ END //
 
 DELIMITER ;
 
+
+
+
+
+
+
+
+
+
 DELIMITER //
 CREATE PROCEDURE `addLanguage`(IN langName VARCHAR(50), IN listingId INT)
 BEGIN
@@ -74,6 +117,15 @@ BEGIN
 END //
 
 DELIMITER ;
+
+
+
+
+
+
+
+
+
 
 DELIMITER //
 CREATE PROCEDURE listingsUsingEmail(IN emailAdd VARCHAR(100))
@@ -86,6 +138,30 @@ BEGIN
             SELECT * FROM listings WHERE listing_id = listing;
 		ELSE 
 			SELECT "Email or Password doesn't match or User does not exists";
+        END IF;
+END //
+DELIMITER ;
+
+
+
+
+
+
+
+
+
+
+
+DELIMITER //
+CREATE PROCEDURE listingsUsingNeighborhoodID(IN NeighborhoodID INT)
+BEGIN
+        DECLARE `check` INT;
+		SET `check` = (SELECT COUNT(*) FROM listings WHERE neighborhood_id = NeighborhoodID);
+		IF (`check` > 0) THEN
+			SELECT * FROM listings
+            WHERE neighborhood_id = NeighborhoodID;
+		ELSE 
+			SELECT "Neighborhood ID doesn't match or Neighborhood ID does not exists";
         END IF;
 END //
 DELIMITER ;
