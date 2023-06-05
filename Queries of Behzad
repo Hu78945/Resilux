@@ -19,11 +19,11 @@ INSERT INTO listings (
         price_per_night,
         is_available,
         Address,
+        no_of_guests,
         no_of_beds,
         no_of_bedrooms,
         no_of_bathrooms,
         host_id,
-        neighborhood_id
     )
 values (
         TITLE,
@@ -61,11 +61,11 @@ CREATE PROCEDURE update_listing (
         price_per_night,
         is_available,
         Address,
+        no_of_guests,
         no_of_beds,
         no_of_bedrooms,
         no_of_bathrooms,
-        host_id,
-        neighborhood_id
+        host_id
     )
     VALUES (
         COALESCE(TITLE, NULL),
@@ -81,6 +81,15 @@ CREATE PROCEDURE update_listing (
     );
 END $$
 DELIMITER ;
+
+
+CREATE DEFINER=`admin`@`%` PROCEDURE `delete_listing`(
+    IN ID INT
+    
+)
+BEGIN
+	DELETE FROM listings WHERE listing_id = ID;
+END
 
 
 
