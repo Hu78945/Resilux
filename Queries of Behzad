@@ -106,6 +106,18 @@ END $$
 DELIMITER ;
 
 
+DELIMITER $$
+CREATE PROCEDURE delete_review_on_listing (
+	IN ID INT
+   
+) BEGIN
+	DELETE FROM reviews where review_id = ID;
+    
+END $$
+DELIMITER ;
+
+
+
 
 
 
