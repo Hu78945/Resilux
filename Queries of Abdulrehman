@@ -20,4 +20,70 @@
 -- END $$
 -- DELIMITER ;
 
+CALL add_bookings(curdate(), curdate(), 45.76, 1, 6, 4);
 
+**Payment**
+
+DELIMITER $$
+CREATE PROCEDURE 
+add_Payments(IN Amount decimal(10, 2), IN userId int,
+IN bookingId int, IN paymentMethodID int)  
+BEGIN
+    INSERT INTO payments (  
+                            amount,
+                            user_id,
+                            booking_id,
+                            payment_method
+                        )
+
+    VALUE (Amount, userId, bookingId, paymentMethodID);
+                            
+    
+END $$
+DELIMITER ;
+call add_Payments (23.32, 3, 2, 1);
+
+**Update Bookings**
+
+END $$
+DELIMITER ;
+drop procedure add_PaymentMethod;
+call add_PaymentMethod(true, false, false, 3, 1, 3)
+
+DELIMITER $$
+CREATE PROCEDURE 
+update_bookings(IN startDate date, IN endDate date, IN totalPrice decimal(10, 2),
+IN guestId int, IN listingId int, IN noOfGuests int, id int)  
+BEGIN
+    UPDATE bookings SET `start_date` = startDate,
+                            end_date = endDate,
+                            total_price = totalPrice,
+                            guest_id = guestId,
+                            listing_id = listingId,
+                            no_of_guests = noOfGuests where booking_id = id;
+END $$
+DELIMITER ;
+
+**Notification Trigger**
+
+DELIMITER $$
+CREATE TRIGGER update_bookings_trigger
+AFTER UPDATE ON bookings
+FOR EACH ROW
+BEGIN
+    -- Call the update_bookings procedure passing the updated values
+    insert into notifications(message, user_id) values("The table is updated..." , user() );
+END $$
+DELIMITER ;
+
+**Delete bookings**
+
+DELIMITER $$
+CREATE PROCEDURE delete_bookings(IN row_id INT)
+BEGIN
+    DELETE FROM bookings
+	WHERE booking_id = row_id;
+
+END $$
+DELIMITER ;
+call delete_bookings(2)
