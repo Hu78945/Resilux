@@ -87,3 +87,40 @@ BEGIN
 END $$
 DELIMITER ;
 call delete_bookings(2)
+
+**Insert messages**
+
+
+DELIMITER $$
+CREATE PROCEDURE 
+message_Insertion(IN messageText text, IN senderID int, IN listingID int,
+IN recieverID int)  
+BEGIN
+    INSERT INTO messages (message_text,
+                            sender_id,
+                            listing_id,
+                            reciever_id
+                            )
+
+    VALUE (message_text, senderID, listingID, recieverID);
+                            
+    
+END $$
+DELIMITER ;
+
+call message_Inserted("this is message",  3, 6, 5);
+
+**Delete Messages**
+
+  DELIMITER $$
+CREATE PROCEDURE 
+message_Deletion(IN messageID int)
+BEGIN
+    delete FROM messages 
+    where message_id = messageID;
+    
+END $$
+DELIMITER ;
+
+call message_Deletion(5);
+
