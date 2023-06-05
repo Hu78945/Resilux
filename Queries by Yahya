@@ -165,3 +165,28 @@ BEGIN
         END IF;
 END //
 DELIMITER ;
+
+
+
+
+
+
+
+
+
+
+
+
+DELIMITER //
+CREATE PROCEDURE bookingsUsingUserID(IN UserID INT)
+BEGIN
+        DECLARE `check` INT;
+		SET `check` = (SELECT COUNT(*) FROM bookings WHERE guest_id = UserID);
+		IF (`check` > 0) THEN
+			SELECT * FROM bookings 
+            WHERE guest_id = userID;
+		ELSE 
+			SELECT "User ID doesn't match or User does not exists or User doesn't have bookings";
+        END IF;
+END //
+DELIMITER ;
