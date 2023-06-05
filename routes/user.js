@@ -1,15 +1,12 @@
 const router = require("express").Router();
-const { getUser, updateUser,deleteUser } = require("../controllers/userController");
 const {
-  checkIfAuthenticated,
-  checkUserRole,
-} = require("../controllers/authController");
+  getUser,
+  updateUser,
+  deleteUser,
+} = require("../controllers/userController");
 
-router
-  .route("/:id")
-  .get(getUser)
-  .put(checkIfAuthenticated, checkUserRole, updateUser);
+router.route("/:id").get(getUser);
 
-router.route('/:email').delete(checkIfAuthenticated,checkUserRole,deleteUser);
+router.route("/:email").delete(deleteUser).put(updateUser);
 
 module.exports = router;

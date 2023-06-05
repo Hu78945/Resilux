@@ -22,9 +22,6 @@ const loginUser = (req, res) => {
           message: `No user was found with this emial ${req.body.email}`,
         });
       }
-
-      console.log(data);
-
       const CheckdPasswrod = bcrypt.compareSync(
         req.body.password,
         data[0].Password
@@ -160,30 +157,31 @@ const checkIfAuthenticated = (req, res, next) => {
   }
 
   //Assign the data to the req.user
+
   db.query(
     "SELECT Email from users WHERE Email = ?",
-    [decoded.Email],
+    [[decoded.Email]],
     function (err, data) {
       if (err) {
         return res.status(500).json({
           success: false,
           message: err.message,
-          err,
+          stack: err.stack,
         });
       }
+      const Email = data[0].Email;
       console.log(data);
-      const Email = data[0];
-      console.log(`This is the Email ${Email}`);
+      console.log(`This is the Email: ${Email}`);
       req.user = Email;
     }
   );
-  console.log(req.user);
 
   next();
 };
 
 const checkUserRole = (req, res, next) => {
-  if (req.user === req.params.id) {
+  console.log(`This is the req.user: ${req.user}`);
+  if (req.user === req.params.email) {
     next();
   }
   return res.status(401).json({
