@@ -66,4 +66,13 @@ END //
 
 DELIMITER ;
 
+DELIMITER //
+CREATE PROCEDURE `addLanguage`(IN langName VARCHAR(50), IN listingId INT)
+BEGIN
+	INSERT INTO languages(`name`,listing_id)
+    VALUES (langName,listingId);
+END //
+
+DELIMITER ;
+
 
