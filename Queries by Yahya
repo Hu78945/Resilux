@@ -49,4 +49,21 @@ END //
 
 DELIMITER ;
 
+# delete
+DELIMITER //
+CREATE PROCEDURE `delete`(IN emailAdd VARCHAR(100),IN pass VARCHAR(100))
+BEGIN
+		  DECLARE `check` INT;
+		SET `check` = (SELECT COUNT(*) FROM credentials WHERE Email = emailAdd);
+		IF (`check` > 0) THEN
+        
+			DELETE  FROM credentials
+			WHERE Email = emailAdd;
+		ELSE 
+			SELECT "Email or Password doesn't match or User does not exists";
+        END IF;
+END //
+
+DELIMITER ;
+
 
