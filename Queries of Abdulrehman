@@ -1,2 +1,23 @@
 #Queries in creating Store procedure, Triggers, Views and Functions
 #Abdulrehman
+
+**BOOKING INSERTION**
+-- DELIMITER $$
+-- CREATE PROCEDURE 
+-- add_bookings(IN startDate date, IN endDate date, IN totalPrice decimal(10, 2),
+-- IN guestId int, IN listingId int, IN noOfGuests int)  
+-- BEGIN
+--     INSERT INTO bookings (`start_date`,
+--                             end_date,
+--                             total_price,
+--                             guest_id,
+--                             listing_id,
+--                             no_of_guests)
+
+--     VALUE (startDate, endDate, totalPrice, guestId, listingId, noOfGuests);
+--                             
+--     
+-- END $$
+-- DELIMITER ;
+
+
