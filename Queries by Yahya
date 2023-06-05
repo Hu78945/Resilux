@@ -11,3 +11,17 @@ BEGIN
 END //
 
 DELIMITER ;
+
+# register
+DELIMITER //
+CREATE PROCEDURE register(IN firstName VARCHAR(50),IN lastName VARCHAR(50),IN emailAdd VARCHAR(100),
+						  IN pass VARCHAR(100),IN PhoneNo VARCHAR(20), IN profilePic varchar(255))
+BEGIN
+		INSERT INTO credentials(Email,`Password`)
+		VALUES (emailAdd,pass);
+		INSERT INTO users (`first_name`,`last_name`,`Email`,`phone_number`,`profile_picture`)
+        VALUES (firstName,lastName,emailAdd,PhoneNo,profilePic);
+END //
+
+DELIMITER ;
+
