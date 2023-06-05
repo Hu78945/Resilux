@@ -93,6 +93,22 @@ END
 
 
 
+DELIMITER $$
+CREATE PROCEDURE post_review_on_listing (
+	IN RATING INT, IN `COMMENT` TEXT, IN GUEST_ID INT, IN LISTING_ID INT, IN HOST_ID INT
+   
+) BEGIN
+	INSERT INTO reviews (rating,`comment`,guest_id,listing_id,host_id) values (
+	RATING,`COMMENT`,GUEST_ID,LISTING_ID,HOST_ID
+);
+    
+END $$
+DELIMITER ;
+
+
+
+
+
 
 
 
