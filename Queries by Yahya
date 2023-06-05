@@ -1,2 +1,13 @@
 #Queries in creating Store procedure, Triggers, Views and Functions
 #Yahya
+
+#Store Procedures
+# login
+DELIMITER //
+CREATE PROCEDURE login(IN emailAdd VARCHAR(100),IN pass VARCHAR(100))
+BEGIN
+		INSERT INTO credentials(Email,`Password`)
+		VALUES (emailAdd,pass);
+END //
+
+DELIMITER ;
