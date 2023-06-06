@@ -138,4 +138,96 @@ const updateListings = (req, res) => {
     }
   );
 };
-module.exports = { getListings, updateListings };
+
+//Delete a listing profile
+const deleteListing = (req, res) => {
+    
+  
+      const id = req.params.id;
+  
+      
+        //Checking if the listings exist
+        db.query(
+          "SELECT * FROM listings where listing_id = ?",
+          [id],
+          function (err, data) {
+            //If there is a error in the query
+            if (err) {
+              return res.status(500).json({
+                success: false,
+                message: err.message,
+                err,
+              });
+            }
+  
+            //Check if the listing is found
+            if (data.length === 0) {
+              return res.status(404).json({
+                success: true,
+                message: `No listing was found with id: ${req.params.id}`,
+              });
+            }
+          }
+        );
+
+        //Delete the user information
+        db.query(
+          "DELETE FROM listings WHERE listing_id = ?;",
+          [id],
+          function (err, data) {
+            //If there is an error
+            if (err) {
+              return res.status(500).json({
+                success: false,
+                message: err.message,
+                err,
+              });
+            }
+  
+            return res.status(200).json({
+              success: true,
+              message: "user profile have been Deleted",
+            });
+          }
+        );
+   
+  };
+
+//Creating the listing
+
+const createlisting = (req, res) => {
+    const info = [
+        req.body.title,
+        req.body.description,
+        req.body.price_per_night,
+        req.body.is_available,
+        req.body.Address,
+        req.body.no_of_guests,
+        req.body.no_of_beds,
+        req.body.no_of_bedrooms,
+        req.body.no_of_bathrooms,
+      ];
+      //insert the listings information
+      db.query(
+        "INSERT INTO listings  (title, `description`, price_per_night, is_available, Address, no_of_guests ,no_of_beds, no_of_bedrooms, no_of_bathrooms) values (?)",
+        [info],
+        function (err, data) {
+          //If there is an error
+          if (err) {
+            return res.status(500).json({
+              success: false,
+              message: err.message,
+              err,
+            });
+          }
+
+          return res.status(200).json({
+            success: true,
+            message: "user profile have been Deleted",
+          });
+        }
+      );
+ 
+};
+
+module.exports = { getListings, updateListings, deleteListing,  createlisting};
