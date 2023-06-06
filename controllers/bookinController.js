@@ -73,6 +73,16 @@ const UpdateABooking = (req, res) => {
   try {
     const id = req.params.id;
 
+    const values = [
+      req.body.startDate,
+      req.body.endDate,
+      req.body.totalPrice,
+      req.body.guestId,
+      req.body.listingId,
+      req.body.noOfGuests,
+      id,
+    ];
+
     db.query(
       "SELECT * FROM bookings WHERE booking_id = ?",
       [id],
@@ -91,35 +101,25 @@ const UpdateABooking = (req, res) => {
             data,
           });
         }
-      }
-    );
 
-    const values = [
-      req.body.startDate,
-      req.body.endDate,
-      req.body.totalPrice,
-      req.body.guestId,
-      req.body.listingId,
-      req.body.noOfGuests,
-      id,
-    ];
+        db.query(
+          "UPDATE bookings SET `start_date` = ?,end_date = ?,total_price = ?,guest_id = ?,listing_id = ?,no_of_guests = ? where booking_id = ?;",
+          [values],
+          (err, data) => {
+            if (err) {
+              return res.status(500).json({
+                success: false,
+                message: err.message,
+                err,
+              });
+            }
 
-    db.query(
-      "UPDATE bookings SET `start_date` = ?,end_date = ?,total_price = ?,guest_id = ?,listing_id = ?,no_of_guests = ? where booking_id = ?;",
-      [values],
-      (err, data) => {
-        if (err) {
-          return res.status(500).json({
-            success: false,
-            message: err.message,
-            err,
-          });
-        }
-
-        return res.status(200).json({
-          success: true,
-          message: "Booking was updated",
-        });
+            return res.status(200).json({
+              success: true,
+              message: "Booking was updated",
+            });
+          }
+        );
       }
     );
   } catch (err) {
