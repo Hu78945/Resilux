@@ -83,6 +83,14 @@ const UpdateABooking = (req, res) => {
             message: err.message,
           });
         }
+
+        if (data.length === 0) {
+          return res.status(404).json({
+            success: true,
+            message: "No Booking was found with the specfied id",
+            data,
+          });
+        }
       }
     );
 
@@ -125,6 +133,7 @@ const UpdateABooking = (req, res) => {
 const DeleteABooking = (req, res) => {
   try {
     const id = req.params.id;
+    let bool = true;
 
     db.query(
       "SELECT * FROM bookings WHERE booking_id = ?",
@@ -136,25 +145,31 @@ const DeleteABooking = (req, res) => {
             message: err.message,
           });
         }
-      }
-    );
-
-    db.query(
-      "DELETE FROM bookings WHERE booking_id = ? ",
-      [id],
-      (err, data) => {
-        if (err) {
-          return res.status(500).json({
-            success: false,
-            message: err.message,
-            err,
+        if (data.length === 0) {
+          return res.status(404).json({
+            success: true,
+            message: "No Booking was found with the specfied id",
           });
         }
 
-        return res.status(200).json({
-          success: true,
-          message: "Booking was deleted",
-        });
+        db.query(
+          "DELETE FROM bookings WHERE booking_id = ? ",
+          [id],
+          (err, data) => {
+            if (err) {
+              return res.status(500).json({
+                success: false,
+                message: err.message,
+                err,
+              });
+            } else {
+              return res.status(200).json({
+                success: true,
+                message: "Booking was deleted",
+              });
+            }
+          }
+        );
       }
     );
   } catch (err) {

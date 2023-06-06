@@ -1,2 +1,2 @@
 SELECT *
-FROM listings;
+FROM bookings;
