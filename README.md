@@ -1,4 +1,6 @@
 # RESILUXE
+## API Code
+Please go to master branch in order to view api code.
 
 ## ABSTRACT
 
